@@ -1,0 +1,230 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap');
+  *{box-sizing:border-box;margin:0;padding:0}
+  .site{font-family:'DM Sans',sans-serif;color:var(--color-text-primary);background:var(--color-background-primary);max-width:900px}
+  .nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:0.5px solid var(--color-border-tertiary)}
+  .logo{font-family:'DM Serif Display',serif;font-size:18px;letter-spacing:-0.3px}
+  .logo span{color:#1D9E75}
+  .nav-links{display:flex;gap:1.5rem;font-size:13px;color:var(--color-text-secondary)}
+  .nav-links a{text-decoration:none;color:inherit}
+  .hero{padding:5rem 2rem 4rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+  .hero-tag{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#0F6E56;font-weight:500;margin-bottom:1rem}
+  .hero h1{font-family:'DM Serif Display',serif;font-size:42px;line-height:1.1;letter-spacing:-1px;margin-bottom:1.25rem}
+  .hero h1 em{font-style:italic;color:#1D9E75}
+  .hero p{font-size:15px;line-height:1.7;color:var(--color-text-secondary);margin-bottom:2rem}
+  .btn-primary{display:inline-block;background:#1D9E75;color:#fff;padding:0.75rem 1.5rem;border-radius:6px;font-size:14px;font-weight:500;text-decoration:none;cursor:pointer;border:none}
+  .btn-secondary{display:inline-block;border:0.5px solid var(--color-border-primary);color:var(--color-text-primary);padding:0.75rem 1.5rem;border-radius:6px;font-size:14px;font-weight:400;text-decoration:none;margin-left:0.75rem;cursor:pointer;background:transparent}
+  .hero-visual{background:var(--color-background-secondary);border-radius:12px;border:0.5px solid var(--color-border-tertiary);padding:2rem;display:flex;flex-direction:column;gap:1rem}
+  .stat-row{display:flex;gap:1rem}
+  .stat-card{flex:1;background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:8px;padding:1rem}
+  .stat-card .num{font-family:'DM Serif Display',serif;font-size:28px;color:#1D9E75}
+  .stat-card .lbl{font-size:11px;color:var(--color-text-secondary);margin-top:2px}
+  .mini-part{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:8px;padding:0.875rem 1rem;display:flex;align-items:center;gap:12px}
+  .mini-part .icon{width:36px;height:36px;background:#E1F5EE;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#0F6E56;font-size:18px;flex-shrink:0}
+  .mini-part .info{flex:1}
+  .mini-part .name{font-size:13px;font-weight:500}
+  .mini-part .meta{font-size:11px;color:var(--color-text-secondary)}
+  .mini-part .badge{font-size:10px;background:#E1F5EE;color:#0F6E56;padding:2px 8px;border-radius:20px;white-space:nowrap}
+  .divider{height:0.5px;background:var(--color-border-tertiary);margin:0 2rem}
+  .section{padding:4rem 2rem}
+  .section-tag{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#0F6E56;font-weight:500;margin-bottom:0.75rem}
+  .section h2{font-family:'DM Serif Display',serif;font-size:32px;line-height:1.2;letter-spacing:-0.5px;margin-bottom:0.75rem}
+  .section .sub{font-size:15px;color:var(--color-text-secondary);max-width:520px;line-height:1.7;margin-bottom:2.5rem}
+  .process{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+  .step{background:var(--color-background-secondary);border-radius:10px;padding:1.5rem;position:relative}
+  .step-num{font-family:'DM Serif Display',serif;font-size:36px;color:#9FE1CB;line-height:1;margin-bottom:0.75rem}
+  .step h3{font-size:14px;font-weight:500;margin-bottom:0.4rem}
+  .step p{font-size:13px;color:var(--color-text-secondary);line-height:1.6}
+  .casos{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:0}
+  .caso{background:var(--color-background-secondary);border-radius:10px;padding:1.5rem;border:0.5px solid var(--color-border-tertiary)}
+  .caso-icon{font-size:20px;color:#0F6E56;margin-bottom:0.75rem}
+  .caso h3{font-size:14px;font-weight:500;margin-bottom:0.4rem}
+  .caso p{font-size:13px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:0.75rem}
+  .caso-meta{display:flex;gap:0.5rem;flex-wrap:wrap}
+  .tag{font-size:10px;padding:2px 8px;border-radius:20px;border:0.5px solid var(--color-border-tertiary);color:var(--color-text-secondary)}
+  .materiales{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+  .mat{background:var(--color-background-secondary);border-radius:10px;padding:1.25rem}
+  .mat-name{font-size:13px;font-weight:500;margin-bottom:0.25rem}
+  .mat-desc{font-size:12px;color:var(--color-text-secondary);line-height:1.5;margin-bottom:0.75rem}
+  .mat-props{display:flex;flex-direction:column;gap:4px}
+  .mat-prop{display:flex;justify-content:space-between;font-size:11px;color:var(--color-text-secondary)}
+  .mat-bar-wrap{width:60%;height:3px;background:var(--color-border-tertiary);border-radius:2px;margin-top:3px}
+  .mat-bar{height:3px;border-radius:2px;background:#1D9E75}
+  .cta{background:var(--color-background-secondary);border-radius:12px;border:0.5px solid var(--color-border-tertiary);padding:3rem 2rem;text-align:center;margin:0 2rem 4rem}
+  .cta h2{font-family:'DM Serif Display',serif;font-size:30px;letter-spacing:-0.5px;margin-bottom:0.75rem}
+  .cta p{font-size:15px;color:var(--color-text-secondary);max-width:420px;margin:0 auto 2rem;line-height:1.7}
+  .cta-form{display:flex;gap:0.75rem;max-width:400px;margin:0 auto}
+  .cta-form input{flex:1;padding:0.75rem 1rem;border:0.5px solid var(--color-border-secondary);border-radius:6px;font-size:14px;background:var(--color-background-primary);color:var(--color-text-primary)}
+  .footer{padding:1.5rem 2rem;border-top:0.5px solid var(--color-border-tertiary);display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--color-text-secondary)}
+</style>
+
+<div class="site">
+  <h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden">Web de negocio de ingeniería y fabricación industrial con impresión 3D</h2>
+
+  <nav class="nav">
+    <div class="logo">forma<span>tec</span></div>
+    <div class="nav-links">
+      <a href="#">Servicios</a>
+      <a href="#">Casos</a>
+      <a href="#">Materiales</a>
+      <a href="#">Contacto</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div>
+      <div class="hero-tag">Ingeniería + fabricación rápida</div>
+      <h1>Tu pieza, <em>en 48 horas.</em></h1>
+      <p>Diseño de ingeniería y fabricación de piezas técnicas para entornos industriales. Recambios descatalogados, componentes de desgaste, útiles de producción.</p>
+      <button class="btn-primary" onclick="sendPrompt('Quiero pedir presupuesto para una pieza industrial')">Pedir presupuesto ↗</button>
+      <button class="btn-secondary" onclick="sendPrompt('Cuéntame más sobre los casos de uso')">Ver casos</button>
+    </div>
+    <div class="hero-visual">
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="num">48h</div>
+          <div class="lbl">Entrega estándar</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">±0.2</div>
+          <div class="lbl">Tolerancia mm</div>
+        </div>
+      </div>
+      <div class="mini-part">
+        <div class="icon"><i class="ti ti-settings" aria-hidden="true"></i></div>
+        <div class="info">
+          <div class="name">Guía de rodillo — PA6-GF30</div>
+          <div class="meta">Maquinaria de adhesivo · Entorno químico</div>
+        </div>
+        <div class="badge">Entregado</div>
+      </div>
+      <div class="mini-part">
+        <div class="icon"><i class="ti ti-tool" aria-hidden="true"></i></div>
+        <div class="info">
+          <div class="name">Fixture de montaje — PETG</div>
+          <div class="meta">Línea de ensamblaje · Útil de producción</div>
+        </div>
+        <div class="badge">En proceso</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-tag">Cómo trabajamos</div>
+    <h2>De problema a pieza,<br>sin burocracia</h2>
+    <p class="sub">No tienes que saber qué material ni cómo fabricarlo. Nos describes qué falla y nosotros nos encargamos de todo.</p>
+    <div class="process">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Nos describes el problema</h3>
+        <p>Foto, croquis o pieza rota. En 24h tienes un presupuesto cerrado.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Diseñamos en ingeniería</h3>
+        <p>Modelado 3D profesional, selección de material según entorno y carga.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Fabricamos y entregamos</h3>
+        <p>Pieza funcional en 48h, con ficha técnica y garantía de ajuste.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-tag">Casos de uso</div>
+    <h2>Lo que más nos piden</h2>
+    <p class="sub">Trabajamos con PYMES industriales del Baix Llobregat, Zona Franca y área metropolitana de Barcelona.</p>
+    <div class="casos">
+      <div class="caso">
+        <div class="caso-icon"><i class="ti ti-refresh-alert" aria-hidden="true"></i></div>
+        <h3>Recambios descatalogados</h3>
+        <p>Piezas de maquinaria antigua cuyo fabricante ya no las suministra o tarda semanas en enviarlas.</p>
+        <div class="caso-meta">
+          <span class="tag">PA6-GF30</span><span class="tag">Ingeniería inversa</span><span class="tag">48h</span>
+        </div>
+      </div>
+      <div class="caso">
+        <div class="caso-icon"><i class="ti ti-tools" aria-hidden="true"></i></div>
+        <h3>Útiles de producción</h3>
+        <p>Jigs, fixtures y plantillas de montaje que el taller necesita pero compras no prioriza.</p>
+        <div class="caso-meta">
+          <span class="tag">PETG</span><span class="tag">SolidWorks</span><span class="tag">Personalizado</span>
+        </div>
+      </div>
+      <div class="caso">
+        <div class="caso-icon"><i class="ti ti-molecule" aria-hidden="true"></i></div>
+        <h3>Entornos químicamente agresivos</h3>
+        <p>Piezas en contacto con adhesivos, disolventes o fluidos. Materiales seleccionados para cada entorno.</p>
+        <div class="caso-meta">
+          <span class="tag">PA12</span><span class="tag">PUR / PVA</span><span class="tag">Alta resistencia</span>
+        </div>
+      </div>
+      <div class="caso">
+        <div class="caso-icon"><i class="ti ti-3d-cube-sphere" aria-hidden="true"></i></div>
+        <h3>Prototipos funcionales</h3>
+        <p>Validación rápida de concepto antes de invertir en moldes o mecanizado de producción.</p>
+        <div class="caso-meta">
+          <span class="tag">Iteración rápida</span><span class="tag">Sin mínimos</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-tag">Materiales</div>
+    <h2>El material correcto<br>para cada aplicación</h2>
+    <p class="sub">No usamos el mismo plástico para todo. Seleccionamos el material según carga mecánica, entorno químico y temperatura.</p>
+    <div class="materiales">
+      <div class="mat">
+        <div class="mat-name">PA6-GF30</div>
+        <div class="mat-desc">Poliamida con 30% fibra de vidrio. Para piezas estructurales en entornos agresivos.</div>
+        <div class="mat-props">
+          <div class="mat-prop"><span>Rigidez</span><div class="mat-bar-wrap"><div class="mat-bar" style="width:90%"></div></div></div>
+          <div class="mat-prop"><span>Química</span><div class="mat-bar-wrap"><div class="mat-bar" style="width:85%"></div></div></div>
+          <div class="mat-prop"><span>Temperatura</span><div class="mat-bar-wrap"><div class="mat-bar" style="width:80%"></div></div></div>
+        </div>
+      </div>
+      <div class="mat">
+        <div class="mat-name">PA12</div>
+        <div class="mat-desc">Alta resistencia química y flexibilidad. Ideal para guías, juntas y piezas de desgaste.</div>
+        <div class="mat-props">
+          <div class="mat-prop"><span>Rigidez</span><div class="mat-bar-wrap"><div class="mat-bar" style="width:70%"></div></div></div>
+          <div class="mat-prop"><span>Química</span><div class="mat-bar-wrap"><div class="mat-bar" style="width:92%"></div></div></div>
+          <div class="mat-prop"><span>Temperatura</span><div class="mat-bar-wrap"><div class="mat-bar" style="width:75%"></div></div></div>
+        </div>
+      </div>
+      <div class="mat">
+        <div class="mat-name">PETG</div>
+        <div class="mat-desc">Equilibrio entre resistencia y facilidad de fabricación. Para útiles de producción y prototipos.</div>
+        <div class="mat-props">
+          <div class="mat-prop"><span>Rigidez</span><div class="mat-bar-wrap"><div class="mat-bar" style="width:60%"></div></div></div>
+          <div class="mat-prop"><span>Química</span><div class="mat-bar-wrap"><div class="mat-bar" style="width:55%"></div></div></div>
+          <div class="mat-prop"><span>Temperatura</span><div class="mat-bar-wrap"><div class="mat-bar" style="width:58%"></div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <h2>¿Tienes una pieza que resolver?</h2>
+    <p>Cuéntanos el problema. En menos de 24h tienes presupuesto sin compromiso.</p>
+    <div class="cta-form">
+      <input type="email" placeholder="tu@empresa.com" />
+      <button class="btn-primary" onclick="sendPrompt('Quiero contactar para un presupuesto de pieza industrial')">Contactar ↗</button>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <span>formatec · Gavà, Barcelona</span>
+    <span>Ingeniería y fabricación industrial</span>
+  </footer>
+</div>
